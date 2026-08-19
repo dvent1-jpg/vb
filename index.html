@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/tokens.css?v=11">
-  <link rel="stylesheet" href="css/slides.css?v=11">
+  <link rel="stylesheet" href="css/tokens.css?v=13">
+  <link rel="stylesheet" href="css/slides.css?v=13">
 </head>
 <body>
 
@@ -69,23 +69,34 @@
 
     <!-- 03 · Agenda -->
     <section class="slide slide--agenda">
-      <p class="eyebrow reveal">The next hour</p>
-      <div class="agenda-bento">
-        <div class="a-cell reveal" data-reveal="2">
-          <span class="ghost">01</span>
-          <span class="t">Blended AI Search</span>
-          <span class="d">First to market with AI search, without betting the funnel.</span>
+      <div class="agenda-left">
+        <p class="eyebrow reveal">The next hour</p>
+        <div class="agenda-row reveal">
+          <span class="num">01</span>
+          <div class="what">
+            <span class="t">Blended AI Search</span>
+            <span class="d">First to market with AI search, without betting the funnel.</span>
+          </div>
         </div>
-        <div class="a-cell reveal" data-reveal="3">
-          <span class="ghost">02</span>
-          <span class="t">Booking Funnel Redesign</span>
-          <span class="d">The end to end rebuild that lifted mobile bookings 80%.</span>
+        <div class="agenda-row reveal">
+          <span class="num">02</span>
+          <div class="what">
+            <span class="t">Booking Funnel Redesign</span>
+            <span class="d">The end to end rebuild that lifted mobile bookings 80%.</span>
+          </div>
         </div>
-        <div class="a-cell a-cell--wide reveal" data-reveal="4">
-          <span class="ghost">03</span>
-          <span class="t">Questions</span>
-          <span class="d">Wherever you want to take them.</span>
+        <div class="agenda-row reveal">
+          <span class="num">03</span>
+          <div class="what">
+            <span class="t">Questions</span>
+            <span class="d">Wherever you want to take them.</span>
+          </div>
         </div>
+      </div>
+      <div class="side-bento reveal">
+        <div class="cell cell--tall"><img src="assets/card-alpine.jpg" alt=""></div>
+        <div class="cell"><img src="assets/card-coves.jpg" alt=""></div>
+        <div class="cell"><img src="assets/card-aperitivo.jpg" alt=""></div>
       </div>
     </section>
 
@@ -106,11 +117,13 @@
     </section>
 
     <!-- 05 · CS1 Situation -->
-    <section class="slide slide--content">
-      <p class="eyebrow reveal">The situation</p>
-      <h2 class="display-lg reveal">Guests don't think in filters.</h2>
-      <p class="body-lg reveal">They think in stories. Traditional search asks them to translate those stories into checkboxes, and the translation loses everything that matters. So guests were doing their real discovery on Google, where a competitor is always one result away.</p>
-      <div class="story-row reveal">
+    <section class="slide slide--sidestack">
+      <div class="copy">
+        <p class="eyebrow reveal">The situation</p>
+        <h2 class="display-lg reveal">Guests don't think in filters.</h2>
+        <p class="body-lg reveal">They think in stories. Traditional search asks them to translate those stories into checkboxes, and the translation loses everything that matters. So guests were doing their real discovery on Google, where a competitor is always one result away.</p>
+      </div>
+      <div class="side-stack reveal">
         <figure class="story-card"><img src="assets/story-lodge.jpg" alt=""><figcaption class="quote">&ldquo;Somewhere cozy for a family reunion&rdquo;</figcaption></figure>
         <figure class="story-card"><img src="assets/story-venice.jpg" alt=""><figcaption class="quote">&ldquo;A place with character near great restaurants&rdquo;</figcaption></figure>
       </div>
@@ -385,17 +398,15 @@
     </section>
 
     <!-- 26 · Mapping -->
-    <section class="slide slide--meet">
+    <section class="slide slide--sidestack">
       <div class="copy">
         <p class="eyebrow reveal">Why these stories</p>
         <h2 class="display-lg reveal">Velocity Black is where these two stories meet.</h2>
         <p class="body-lg reveal">A luxury travel brand where discovery should feel like inspiration and booking should feel effortless. Members who think in stories, not filters. A concierge that answers the way people ask.</p>
         <p class="body-lg reveal">I've spent six years making an aspirational travel platform convert like a native app while competing with a category giant. That's the job as I read it. I'd love to hear how you see it.</p>
       </div>
-      <div class="meet-grid reveal">
+      <div class="side-stack reveal">
         <div class="cell"><img src="assets/bg-mapping.jpg" alt="Dinner aboard a private jet"></div>
-        <div class="cell cell--stat"><span class="n">10M+</span><span class="l">AI searches</span></div>
-        <div class="cell cell--stat"><span class="n">80%</span><span class="l">More bookings</span></div>
         <div class="cell"><img src="assets/bg-bridge.jpg" alt="Resort courtyard at dusk"></div>
       </div>
     </section>
@@ -417,7 +428,7 @@
 <div id="progress"></div>
 <div id="slide-counter">01 / 27</div>
 
-<script src="js/deck.js?v=11"></script>
+<script src="js/deck.js?v=13"></script>
 
 <!-- Photography via Unsplash (unsplash.com/license):
      bg-title.jpg (glacier bath) — Roan Lavery, unsplash.com/photos/BQLFUB4_EJw
