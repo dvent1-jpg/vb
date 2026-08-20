@@ -36,9 +36,6 @@ html, body {
 }
 
 /* --- Slides --- */
-/* Vertical travel: the deck descends through one black canvas.
-   Slides sit above or below the frame and push through it on advance.
-   Imagery containers (.plax) lag 12% behind their slide's travel. */
 .slide {
   position: absolute;
   inset: 0;
@@ -47,32 +44,15 @@ html, body {
   flex-direction: column;
   justify-content: center;
   visibility: hidden;
-  transform: translateY(103%);
-  z-index: 1;
+  opacity: 0;
+  transition: opacity 700ms var(--vb-ease), visibility 0s 700ms;
 }
-.slide.is-above { transform: translateY(-103%); }
+
 .slide.active {
   visibility: visible;
-  transform: translateY(0);
+  opacity: 1;
+  transition: opacity 700ms var(--vb-ease);
 }
-.slide.is-held { transform: translateY(0); visibility: visible; }
-.slide.z-top { z-index: 5; }
-
-#stage.anim .slide {
-  transition: transform 850ms var(--vb-ease), visibility 0s 850ms;
-}
-#stage.anim .slide.active,
-#stage.anim .slide.is-held {
-  transition: transform 850ms var(--vb-ease);
-}
-
-/* Parallax lag on imagery layers. The shift rides a CSS variable so it
-   composes with any transform a container already carries. */
-.plax { transform: translateY(var(--plax-shift, 0px)); }
-.slide.is-above .plax { --plax-shift: 12%; }
-.slide:not(.active):not(.is-above):not(.is-held) .plax { --plax-shift: -12%; }
-.slide.active .plax, .slide.is-held .plax { --plax-shift: 0px; }
-#stage.anim .plax { transition: transform 850ms var(--vb-ease); }
 
 /* --- Reveal choreography --- */
 .reveal {
@@ -98,10 +78,7 @@ html, body {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition: none; transform: none; }
-  #stage.anim .slide, #stage.anim .plax { transition: opacity 300ms ease; }
-  .slide, .slide.is-above { transform: none; opacity: 0; }
-  .slide .plax { --plax-shift: 0px !important; }
-  .slide.active { transform: none; opacity: 1; }
+  .slide { transition: none; }
 }
 
 /* --- Photographic grounds (velocity.black treatment: imagery
@@ -170,7 +147,7 @@ html, body {
 
 #chrome-header .wordmark { font: 500 24px/1 var(--vb-font-sans); }
 
-#stage.on-title #chrome-header { opacity: 0; transition: opacity 600ms var(--vb-ease); }
+#stage.on-title #chrome-header { opacity: 0; transition: opacity 400ms var(--vb-ease); }
 
 #chrome-header .context {
   font-family: var(--vb-font-mono);
@@ -182,12 +159,12 @@ html, body {
 
 #progress {
   position: absolute;
-  top: 0; right: 0;
-  width: 2px;
-  height: 0%;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0%;
   background: var(--vb-text-primary);
   z-index: 10;
-  transition: height 700ms var(--vb-ease);
+  transition: width 400ms var(--vb-ease);
 }
 
 #slide-counter {
@@ -432,7 +409,7 @@ html, body {
   position: absolute;
   right: -170px;
   top: 46%;
-  transform: translateY(-50%) translateY(var(--plax-shift, 0px));
+  transform: translateY(-50%);
   z-index: 1;
 }
 .slide--cover .media img { height: 1010px; max-width: none; width: auto; }
