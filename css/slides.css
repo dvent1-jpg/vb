@@ -594,14 +594,17 @@ html, body {
 }
 
 /* --- Token sheet (design-system reveal) --- */
-.slide--tokens { gap: var(--vb-space-4); }
-.slide--tokens .head { display: flex; flex-direction: column; gap: var(--vb-space-2); max-width: 1500px; }
+.slide--tokens { flex-direction: row; align-items: center; gap: var(--vb-space-6); }
+.slide--tokens .head { flex: 1 1 auto; display: flex; flex-direction: column; gap: var(--vb-space-2); }
 .token-sheet {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: var(--vb-space-5);
-  margin-top: var(--vb-space-2);
-  padding-top: var(--vb-space-4);
+  flex: none;
+  width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--vb-space-4);
+}
+.token-sheet .token-group {
+  padding-top: var(--vb-space-3);
   border-top: 1px solid var(--vb-border);
 }
 .token-group { display: flex; flex-direction: column; gap: var(--vb-space-3); }
