@@ -326,6 +326,47 @@ html, body {
 }
 
 /* --- Role strip (bottom of Task / cover slides) --- */
+/* Cover variant: straight phone, cropped at the role-strip hairline,
+   with an animated violet-to-ember glow breathing behind it. */
+.slide--cover.cover-glow .media {
+  position: absolute;
+  right: 170px;
+  top: 150px;
+  bottom: 167px; /* container floor = role-strip's top hairline */
+  transform: none;
+  width: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  /* negative insets free the glow on top/sides; 0 clips at the hairline */
+  clip-path: inset(-260px -260px 0 -260px);
+}
+.slide--cover.cover-glow .media::before {
+  content: '';
+  position: absolute;
+  top: 34px; left: 62px; right: 62px;
+  height: 1130px;
+  border-radius: 130px;
+  background: linear-gradient(140deg, #9747ff 12%, #fb390c 88%);
+  filter: blur(64px);
+  opacity: 0.4;
+  animation: glow-breathe 8s var(--vb-ease) infinite alternate;
+}
+.slide--cover.cover-glow .media img {
+  position: relative;
+  z-index: 1;
+  width: 640px;
+  height: auto;
+  max-width: none;
+}
+@keyframes glow-breathe {
+  from { opacity: 0.3; transform: scale(0.985); }
+  to   { opacity: 0.58; transform: scale(1.03); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide--cover.cover-glow .media::before { animation: none; }
+}
+
 .role-strip {
   position: absolute;
   bottom: 110px; left: 160px; right: 160px;
