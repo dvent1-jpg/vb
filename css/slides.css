@@ -754,3 +754,5 @@ html, body {
   transition: border-color 300ms var(--vb-ease);
 }
 .slide--close a:hover { border-bottom-color: var(--vb-text-muted); }
+
+.token-sheet .ph-line { font: 400 20px/1.4 var(--vb-font-sans); color: var(--vb-text-soft); }
