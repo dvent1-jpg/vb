@@ -260,6 +260,7 @@ html, body {
 .slide--split.media-wide .copy { flex: 1 1 38%; }
 .slide--split.media-wide .media { flex: 1 1 62%; }
 .slide--split .media img.device--desktop { max-height: 830px; }
+.slide--split .media img.device--pair { max-height: 780px; max-width: 108%; margin-right: -60px; }
 
 /* --- Accent utilities (velocity.black's single non-monochrome move) --- */
 .grad-text {
