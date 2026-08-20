@@ -1,43 +1,129 @@
 /* ---------------------------------------------------------------
    Velocity Black design tokens
-   Extracted from velocity.black (2026-08-18) — color, type scale,
-   spacing, and gradient values observed in the production CSS.
+   Reverse engineered from velocity.black (homepage + /membership,
+   audited 2026-08-18 and 2026-08-20). Values were sampled from the
+   rendered site via computed styles, then named and structured here.
+   Two layers:
+     1. OBSERVED — values as they exist on velocity.black.
+     2. DECK ROLES — semantic aliases tuned for this 1920×1080 stage.
+        Where a deck value interpolates or departs from an observed
+        one, the comment says so.
    Typefaces substituted: Twenty Four Sans (proprietary, © Velocity
    Black / FROST) → Hanken Grotesk; TFS Mono → Geist Mono.
    --------------------------------------------------------------- */
 
 :root {
-  /* Ground */
-  --vb-bg: #0a0a0a;
-  --vb-bg-raised: #121212;
-  --vb-surface-1: #252525;
-  --vb-surface-2: #2e2e2e;
-  --vb-surface-3: #363636;
+  /* ============ 1. OBSERVED ============ */
 
-  /* Text hierarchy (white at stepped opacity, as on velocity.black) */
+  /* Ground & surfaces */
+  --vb-black: #0a0a0a;             /* the ground everywhere */
+  --vb-gray-950: #121212;          /* raised card ground */
+  --vb-gray-925: #1a1a1a;
+  --vb-gray-900: #252525;
+  --vb-gray-850: #2e2e2e;
+  --vb-gray-800: #363636;
+  --vb-gray-700: #4d4d4d;          /* subtle rules (1px) */
+  --vb-gray-600: #737373;          /* default rules */
+  --vb-gray-500: #808080;
+  --vb-gray-400: #ababab;          /* dim text on dark */
+  --vb-gray-350: #b3b3b3;
+  --vb-gray-300: #bdbdbd;
+  --vb-gray-100: #ededed;          /* foreground on dark */
+  --vb-white: #ffffff;
+  --vb-overlay: rgba(10, 10, 10, 0.95);       /* nav / modal scrim */
+  --vb-surface-ghost: rgba(255, 255, 255, 0.1); /* ghost buttons, chips */
+
+  /* Text (white at stepped opacity, as rendered on site) */
   --vb-text-primary: #ffffff;
   --vb-text-emphasis: rgba(255, 255, 255, 0.9);
-  --vb-text-soft: rgba(255, 255, 255, 0.75);
-  --vb-text-secondary: rgba(255, 255, 255, 0.6);
+  --vb-text-soft: rgba(255, 255, 255, 0.75);   /* observed */
+  --vb-text-secondary: rgba(255, 255, 255, 0.6); /* observed */
   --vb-text-muted: rgba(255, 255, 255, 0.5);
-  --vb-foreground: #ededed;
-
-  /* Borders */
-  --vb-border: rgba(255, 255, 255, 0.1);
-  --vb-border-default: #737373;
-  --vb-border-contrast-less: #4d4d4d;
 
   /* Signals */
   --vb-error: #eb5254;
   --vb-warning: #f0a020;
 
-  /* Type families */
+  /* Accent — violet / ember, plus the blue that only appears
+     inside the aurora conic. Gradient text clips to one word. */
+  --vb-violet: #9747ff;
+  --vb-ember: #fb390c;
+  --vb-blue: #1e6dfa;
+  --vb-grad-accent: linear-gradient(90deg, var(--vb-violet) 0%, var(--vb-ember) 100%);
+  --vb-glow-violet: rgba(151, 71, 255, 0.35);
+  --vb-glow-ember: rgba(251, 57, 12, 0.25);
+
+  /* Aurora: BlurredAnimatedBackground — pill-shaped conic, heavily
+     blurred, low opacity, drifting behind content */
+  --vb-aurora: conic-gradient(from 154deg at 52% 52%, var(--vb-ember) 0deg, var(--vb-blue) 118.8deg, var(--vb-violet) 237.6deg);
+  --vb-aurora-blur: 240px;
+  --vb-aurora-opacity: 0.4;
+
+  /* Shadows (observed verbatim) */
+  --vb-shadow-glow: var(--vb-glow-violet) -2px -2px 2px 0px, var(--vb-glow-ember) 2px -4px 2px 0px;
+  --vb-vignette-inset: rgb(10, 10, 10) 0px 0px 48px 48px inset;
+  --vb-vignette-halo: rgb(10, 10, 10) 0px 0px 48px 48px inset, rgb(10, 10, 10) 0px 0px 16px 16px;
+
+  /* Image scrims & fades — photography always dissolves into the
+     ground before text sits on it */
+  --vb-fade-bottom: linear-gradient(rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.1) 20%, rgb(10, 10, 10) 100%);
+  --vb-fade-bottom-late: linear-gradient(rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.1) 50%, rgb(10, 10, 10) 100%);
+  --vb-fade-hard: linear-gradient(rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.94) 68.51%, rgb(10, 10, 10) 81.42%);
+  --vb-fade-top: linear-gradient(rgb(10, 10, 10) 5%, rgba(10, 10, 10, 0.8) 29.88%, rgba(10, 10, 10, 0.15) 80%, rgba(10, 10, 10, 0) 100%);
+  --vb-scrim-deep: linear-gradient(rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.15) 20%, rgba(10, 10, 10, 0.8) 70.12%, rgb(10, 10, 10) 95%);
+  --vb-fade-raised: linear-gradient(rgba(18, 18, 18, 0), rgb(18, 18, 18) 40%);
+  --vb-fade-raised-full: linear-gradient(rgba(18, 18, 18, 0) 0%, rgb(18, 18, 18) 100%);
+  --vb-img-dim: 0.65;              /* opacity on dimmed photography */
+
+  /* Radii (observed: 4 / 8 / 12 / 24 / 56 / pill / circle) */
+  --vb-radius-xs: 4px;
+  --vb-radius-sm: 8px;
+  --vb-radius-md: 12px;
+  --vb-radius-lg: 24px;
+  --vb-radius-xl: 56px;
+  --vb-radius-pill: 9999px;
+  --vb-radius-circle: 50%;
+
+  /* Borders */
+  --vb-border: rgba(255, 255, 255, 0.1);       /* hairline */
+  --vb-border-strong: rgba(255, 255, 255, 0.25);
+  --vb-border-subtle: var(--vb-gray-700);      /* 1px rules on site */
+  --vb-border-default: var(--vb-gray-600);
+
+  /* Blur scale */
+  --vb-blur-soft: 10px;
+  --vb-blur-glass: 16px;           /* backdrop-filter on nav */
+  --vb-blur-glow: 96px;
+  --vb-blur-glow-lg: 120px;
+
+  /* Motion (observed) — site standard is a symmetric ease at 400ms;
+     micro-interactions at 100ms; long settles at 600ms–1s */
+  --vb-ease-site: cubic-bezier(0.6, 0, 0.4, 1);
+  --vb-ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --vb-dur-micro: 100ms;
+  --vb-dur-quick: 300ms;
+  --vb-dur-standard: 400ms;
+  --vb-dur-settle: 600ms;
+  --vb-dur-slow: 1000ms;
+
+  /* Type families (substitutes, see header note) */
   --vb-font-sans: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
   --vb-font-mono: "Geist Mono", "SF Mono", Menlo, monospace;
+  /* Observed on site: display weight 300 with +0.75px tracking at
+     72px; mono labels tracked 1.6px at 16px (0.1em); weights in use
+     300 / 400 / 500 / 700. */
 
-  /* Type scale — tuned for the 1920×1080 stage.
-     Ratios follow the velocity.black scale (display 300 weight,
-     eyebrow mono at +2px tracking). */
+  /* ============ 2. DECK ROLES ============ */
+
+  /* Surface aliases */
+  --vb-bg: var(--vb-black);
+  --vb-bg-raised: var(--vb-gray-950);
+  --vb-surface-1: var(--vb-gray-900);
+  --vb-surface-2: var(--vb-gray-850);
+  --vb-surface-3: var(--vb-gray-800);
+  --vb-foreground: var(--vb-gray-100);
+
+  /* Type scale — site ratios, sized for a 1920×1080 stage */
   --vb-type-stat: 300 260px/1 var(--vb-font-sans);
   --vb-type-hero: 300 104px/1.08 var(--vb-font-sans);
   --vb-type-display-xl: 300 84px/1.1 var(--vb-font-sans);
@@ -48,12 +134,37 @@
   --vb-type-body-md: 400 22px/1.5 var(--vb-font-sans);
   --vb-type-body-sm: 400 18px/1.45 var(--vb-font-sans);
   --vb-eyebrow-size: 20px;
-  --vb-eyebrow-tracking: 3px;
-  --vb-display-tracking: -0.02em;
+  --vb-eyebrow-tracking: 3px;      /* site: 0.1em; held at 3px/20px = 0.15em for projection */
+  --vb-display-tracking: -0.02em;  /* deck choice; site displays run +0.01em */
 
-  /* Radii */
-  --vb-radius-pill: 9999px;
+  /* Card radius — deck interpolation between the site's 12 and 24,
+     tuned for card sizes on this stage */
   --vb-radius-card: 16px;
+
+  /* Device drop shadows (deck-authored; the site floats no devices) */
+  --vb-shadow-device-lg: 0 40px 80px rgba(0, 0, 0, 0.6);
+  --vb-shadow-device-md: 0 30px 60px rgba(0, 0, 0, 0.55);
+  --vb-shadow-device-sm: 0 24px 48px rgba(0, 0, 0, 0.55);
+
+  /* Glow blob behind cover devices (deck-authored from accent pair) */
+  --vb-grad-glow: linear-gradient(140deg, var(--vb-violet) 12%, var(--vb-ember) 88%);
+
+  /* Tinted device glow: the site's dual-tone card glow, translated
+     to drop-shadow so it follows a transparent PNG's silhouette */
+  --vb-shadow-device-glow:
+    drop-shadow(-3px -5px 14px rgba(151, 71, 255, 0.18))
+    drop-shadow(3px -7px 14px rgba(251, 57, 12, 0.13))
+    drop-shadow(0 40px 80px rgba(0, 0, 0, 0.6));
+
+  /* Hero stat figures: white dissolving to 55% */
+  --vb-grad-stat: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.55) 100%);
+
+  /* Caption fade behind text on image cards (site fades to full
+     ground; cards stop at 0.9 so the image stays present) */
+  --vb-fade-caption: linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.9) 100%);
+
+  /* Vertical mask for the title marquee columns */
+  --vb-fade-mask-vertical: linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
 
   /* Spacing rhythm */
   --vb-space-1: 8px;
@@ -64,18 +175,8 @@
   --vb-space-6: 96px;
   --vb-space-7: 144px;
 
-  /* Image treatment — velocity.black fades photography into ground */
-  --vb-fade-bottom: linear-gradient(rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.1) 20%, rgb(10, 10, 10) 100%);
-  --vb-fade-hard: linear-gradient(rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.94) 68%, rgb(10, 10, 10) 81%);
-
-  /* Accent — the one non-monochrome move on velocity.black:
-     violet-to-ember gradient, clipped to a single word ("unlocked"),
-     echoed as a soft dual-tone glow on cards. Use sparingly. */
-  --vb-grad-accent: linear-gradient(90deg, #9747ff 0%, #fb390c 100%);
-  --vb-glow-violet: rgba(151, 71, 255, 0.35);
-  --vb-glow-ember: rgba(251, 57, 12, 0.25);
-
-  /* Motion */
+  /* Deck motion — slowed to presentation pace from the site's
+     400ms standard; same deceleration family */
   --vb-ease: cubic-bezier(0.22, 1, 0.36, 1);
   --vb-reveal-duration: 900ms;
 }

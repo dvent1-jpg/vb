@@ -81,28 +81,6 @@ html, body {
   .slide { transition: none; }
 }
 
-/* --- Photographic grounds (velocity.black treatment: imagery
-   always dims and fades into #0a0a0a before text sits on it) --- */
-.slide .bg {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-}
-.slide .bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.42;
-}
-.slide .bg .scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(10, 10, 10, 0.45) 0%, rgba(10, 10, 10, 0.62) 55%, rgba(10, 10, 10, 0.97) 100%),
-    linear-gradient(90deg, rgba(10, 10, 10, 0.55) 0%, rgba(10, 10, 10, 0.15) 60%);
-}
-
 /* --- Shared type roles --- */
 .eyebrow {
   font-family: var(--vb-font-mono);
@@ -126,7 +104,7 @@ html, body {
   gap: 10px;
   padding: 12px 32px;
   border-radius: var(--vb-radius-pill);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--vb-surface-ghost);
   color: var(--vb-text-primary);
   font: 500 20px/1 var(--vb-font-sans);
 }
@@ -208,7 +186,7 @@ html, body {
   font: var(--vb-type-stat);
   letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
-  background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.55) 100%);
+  background: var(--vb-grad-stat);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -255,7 +233,7 @@ html, body {
   max-height: 920px;
   max-width: 100%;
   width: auto;
-  filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.6));
+  filter: drop-shadow(var(--vb-shadow-device-lg));
 }
 .slide--split.media-wide .copy { flex: 1 1 38%; }
 .slide--split.media-wide .media { flex: 1 1 62%; }
@@ -285,10 +263,7 @@ html, body {
   -webkit-text-fill-color: transparent;
 }
 .glow {
-  filter:
-    drop-shadow(-3px -5px 14px rgba(151, 71, 255, 0.18))
-    drop-shadow(3px -7px 14px rgba(251, 57, 12, 0.13))
-    drop-shadow(0 40px 80px rgba(0, 0, 0, 0.6));
+  filter: var(--vb-shadow-device-glow);
 }
 .stat-figure.accent {
   background: var(--vb-grad-accent);
@@ -347,7 +322,7 @@ html, body {
   top: 34px; left: 62px; right: 62px;
   height: 1130px;
   border-radius: 130px;
-  background: linear-gradient(140deg, #9747ff 12%, #fb390c 88%);
+  background: var(--vb-grad-glow);
   filter: blur(64px);
   opacity: 0;
 }
@@ -502,7 +477,7 @@ html, body {
 .slide--row3 .devices img {
   max-height: 640px;
   width: auto;
-  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.55));
+  filter: drop-shadow(var(--vb-shadow-device-md));
 }
 
 /* --- Transform (before/after with mirrored callouts) --- */
@@ -537,7 +512,7 @@ html, body {
 .transform-group .phone img {
   width: 345px;
   height: auto;
-  filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.55));
+  filter: drop-shadow(var(--vb-shadow-device-sm));
 }
 .callouts {
   flex: 0 0 190px;
@@ -563,7 +538,7 @@ html, body {
   top: 50%;
   width: 18px;
   height: 1px;
-  background: var(--vb-border-strong, rgba(255, 255, 255, 0.25));
+  background: var(--vb-border-strong);
 }
 .callouts--l .c::after { right: 0; }
 .callouts--r .c::after { left: 0; }
@@ -642,8 +617,8 @@ html, body {
   width: 600px;
   display: flex;
   gap: 24px;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
-  mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 84%, transparent 100%);
+  -webkit-mask-image: var(--vb-fade-mask-vertical);
+  mask-image: var(--vb-fade-mask-vertical);
 }
 /* height: max-content is load-bearing — as a stretched flex child the
    column would be 1080px tall and translateY(-50%) would loop at -540px
@@ -670,7 +645,7 @@ html, body {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 56px 20px 18px;
-  background: linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.88) 100%);
+  background: var(--vb-fade-caption);
   font-family: var(--vb-font-mono);
   font-size: 13px;
   letter-spacing: 1.5px;
@@ -714,7 +689,7 @@ html, body {
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 90px 32px 26px;
-  background: linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.92) 100%);
+  background: var(--vb-fade-caption);
   font: 400 26px/1.35 var(--vb-font-sans);
   color: var(--vb-text-primary);
 }
