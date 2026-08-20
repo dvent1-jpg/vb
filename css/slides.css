@@ -575,6 +575,7 @@ html, body {
 .slide--tokens .head .body-lg { max-width: 900px; }
 .token-board { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 64px 40px; }
 .tg--span2 { grid-column: span 2; }
+.tg--span3 { grid-column: span 3; }
 .token-board .token-group {
   padding-top: 12px;
   border-top: 1px solid var(--vb-border);
@@ -613,12 +614,12 @@ html, body {
 .radius-row { display: flex; gap: 20px; align-items: flex-end; }
 .radius-row .swatch { justify-content: flex-end; }
 .radius-row .rb {
-  width: 58px;
-  height: 58px;
+  width: 52px;
+  height: 52px;
   border: 1px solid var(--vb-border-strong);
   background: var(--vb-bg-raised);
 }
-.radius-row .rb--pill { width: 116px; height: 44px; border-radius: var(--vb-radius-pill); }
+.radius-row .rb--pill { width: 100px; height: 40px; border-radius: var(--vb-radius-pill); }
 .motion-lines {
   display: flex;
   flex-direction: column;
@@ -630,8 +631,8 @@ html, body {
 }
 .fx-row { display: flex; gap: 20px; }
 .fx {
-  width: 200px;
-  height: 116px;
+  width: 170px;
+  height: 100px;
   border-radius: var(--vb-radius-md);
 }
 .fx--glow { background: var(--vb-bg-raised); border: 1px solid var(--vb-border); box-shadow: var(--vb-shadow-glow); }
@@ -756,7 +757,8 @@ html, body {
 }
 .slide--close a:hover { border-bottom-color: var(--vb-text-muted); }
 
-.ph-thumbs { display: flex; gap: 12px; }
+.ph-row { display: flex; align-items: center; gap: 36px; }
+.ph-thumbs { display: flex; gap: 14px; }
 .ph-thumbs .cell {
   width: 200px;
   height: 138px;
