@@ -739,29 +739,15 @@ html, body {
 .nudge-card .chips { display: flex; gap: 12px; }
 .nudge-card .chips .pill { font-size: 18px; padding: 10px 24px; }
 
-/* --- Close --- */
-.slide--close { align-items: flex-start; gap: var(--vb-space-4); }
-.contact-rows {
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  margin-top: var(--vb-space-3);
-  width: 720px;
-}
-.contact-rows a {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 22px 0;
-  border-top: 1px solid var(--vb-border);
+/* --- Close: three contacts, one centered line --- */
+.slide--close { flex-direction: row; justify-content: space-between; align-items: center; }
+.slide--close a {
+  font: 300 38px/1.2 var(--vb-font-sans);
+  letter-spacing: 0.01em;
+  color: var(--vb-text-emphasis);
   text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 6px;
+  transition: border-color 300ms var(--vb-ease);
 }
-.contact-rows a:last-child { border-bottom: 1px solid var(--vb-border); }
-.contact-rows .k {
-  font-family: var(--vb-font-mono);
-  font-size: 14px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--vb-text-muted);
-}
-.contact-rows .v { font: 400 24px/1.3 var(--vb-font-sans); color: var(--vb-text-emphasis); }
+.slide--close a:hover { border-bottom-color: var(--vb-text-muted); }
