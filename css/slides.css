@@ -577,6 +577,20 @@ html, body {
 .tg--span2 { grid-column: span 2; }
 .tg--span3 { grid-column: span 3; }
 .tg--span4 { grid-column: span 4; }
+.tg--code { grid-column: 4; grid-row: 2 / 4; }
+.code-card {
+  background: var(--vb-bg-raised);
+  border: 1px solid var(--vb-border);
+  border-radius: var(--vb-radius-md);
+  padding: 20px 22px;
+  font-family: var(--vb-font-mono);
+  font-size: 12.5px;
+  line-height: 1.8;
+  color: var(--vb-text-muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+.code-card .k { color: var(--vb-text-emphasis); }
 .token-board .token-group {
   padding-top: 12px;
   border-top: 1px solid var(--vb-border);
@@ -604,6 +618,7 @@ html, body {
 .type-provenance .sep { color: var(--vb-text-muted); }
 .type-provenance .now { color: var(--vb-text-emphasis); }
 .gradient-bar {
+  width: 730px;
   height: 60px;
   margin-top: 14px;
   border-radius: var(--vb-radius-md);
@@ -777,8 +792,8 @@ html, body {
 .ph-row { display: flex; align-items: center; gap: 36px; }
 .ph-thumbs { display: flex; gap: 16px; }
 .ph-thumbs .cell {
-  width: 256px;
-  height: 176px;
+  width: 240px;
+  height: 166px;
   border-radius: var(--vb-radius-sm);
   border: 1px solid var(--vb-border);
   overflow: hidden;

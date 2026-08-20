@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/tokens.css?v=47">
-  <link rel="stylesheet" href="css/slides.css?v=47">
+  <link rel="stylesheet" href="css/tokens.css?v=48">
+  <link rel="stylesheet" href="css/slides.css?v=48">
 </head>
 <body>
 
@@ -432,21 +432,30 @@
             <div class="swatch"><div class="fx fx--fade"></div><span class="hx">fade-hard</span></div>
           </div>
         </div>
-        <div class="token-group reveal" data-reveal="4">
-          <span class="g-label">Motion</span>
-          <div class="motion-lines">
-            <span>cubic-bezier(0.6, 0, 0.4, 1)</span>
-            <span>100 &middot; 300 &middot; 400 &middot; 600 &middot; 1000 ms</span>
-          </div>
+        <div class="token-group tg--code reveal" data-reveal="4">
+          <span class="g-label">tokens.css</span>
+          <div class="code-card"><span class="k">--vb-black</span>: #0a0a0a;
+<span class="k">--vb-violet</span>: #9747ff;
+<span class="k">--vb-ember</span>: #fb390c;
+<span class="k">--vb-blue</span>: #1e6dfa;
+<span class="k">--vb-grad-accent</span>: linear-gradient(90deg, var(--vb-violet) 0%, var(--vb-ember) 100%);
+<span class="k">--vb-ease-site</span>: cubic-bezier(0.6, 0, 0.4, 1);
+<span class="k">--vb-radius-pill</span>: 9999px;
+<span class="k">--vb-grain-opacity</span>: 0.55;</div>
         </div>
-        <div class="token-group tg--span4 reveal" data-reveal="5">
+        <div class="token-group tg--span2 reveal" data-reveal="5">
           <span class="g-label">Unsplash API</span>
           <div class="ph-thumbs">
             <div class="cell"><img src="assets/card-santorini.jpg" alt=""></div>
             <div class="cell"><img src="assets/card-thailand.jpg" alt=""></div>
             <div class="cell"><img src="assets/card-alpine.jpg" alt=""></div>
-            <div class="cell"><img src="assets/card-coves.jpg" alt=""></div>
-            <div class="cell"><img src="assets/card-aperitivo.jpg" alt=""></div>
+          </div>
+        </div>
+        <div class="token-group reveal" data-reveal="4">
+          <span class="g-label">Motion</span>
+          <div class="motion-lines">
+            <span>cubic-bezier(0.6, 0, 0.4, 1)</span>
+            <span>100 &middot; 300 &middot; 400 &middot; 600 &middot; 1000 ms</span>
           </div>
         </div>
       </div>
@@ -465,7 +474,7 @@
 <div id="progress"></div>
 <div id="slide-counter">01 / 27</div>
 
-<script src="js/deck.js?v=47"></script>
+<script src="js/deck.js?v=48"></script>
 
 <!-- Photography via Unsplash (unsplash.com/license):
      bg-title.jpg (glacier bath) — Roan Lavery, unsplash.com/photos/BQLFUB4_EJw
