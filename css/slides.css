@@ -740,11 +740,11 @@ html, body {
 .nudge-card .chips .pill { font-size: 18px; padding: 10px 24px; }
 
 /* --- Close: three contacts, one centered line --- */
-.slide--close { flex-direction: row; justify-content: space-between; align-items: center; }
+.slide--close { flex-direction: row; justify-content: center; align-items: center; gap: 84px; }
 .slide--close a {
-  font: 300 38px/1.2 var(--vb-font-sans);
+  font: 300 22px/1.2 var(--vb-font-sans);
   letter-spacing: 0.01em;
-  color: var(--vb-text-emphasis);
+  color: var(--vb-text-soft);
   text-decoration: none;
   border-bottom: 1px solid transparent;
   padding-bottom: 6px;
