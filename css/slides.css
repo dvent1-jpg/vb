@@ -349,8 +349,17 @@ html, body {
   border-radius: 130px;
   background: linear-gradient(140deg, #9747ff 12%, #fb390c 88%);
   filter: blur(64px);
-  opacity: 0.4;
-  animation: glow-breathe 8s var(--vb-ease) infinite alternate;
+  opacity: 0;
+}
+/* Sequence: phone reveal finishes ~1.3s, glow blooms in behind it, then breathes */
+.slide--cover.cover-glow.active .media::before {
+  animation:
+    glow-in 1100ms var(--vb-ease) 1400ms forwards,
+    glow-breathe 8s var(--vb-ease) 2500ms infinite alternate;
+}
+@keyframes glow-in {
+  from { opacity: 0;   transform: scale(0.96); }
+  to   { opacity: 0.3; transform: scale(0.985); }
 }
 .slide--cover.cover-glow .media img {
   position: relative;
@@ -364,7 +373,8 @@ html, body {
   to   { opacity: 0.58; transform: scale(1.03); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .slide--cover.cover-glow .media::before { animation: none; }
+  .slide--cover.cover-glow .media::before,
+  .slide--cover.cover-glow.active .media::before { animation: none; opacity: 0.4; }
 }
 
 .role-strip {
