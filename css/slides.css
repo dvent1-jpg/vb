@@ -578,7 +578,7 @@ html, body {
 .tg--span3 { grid-column: span 3; }
 .tg--span4 { grid-column: span 4; }
 .tg--code { grid-column: 4; grid-row: 2 / 4; }
-.tg--code .code-card { flex: 1; }
+.tg--code .code-card { flex: 1; overflow: hidden; }
 .code-card {
   background: var(--vb-bg-raised);
   border: 1px solid var(--vb-border);

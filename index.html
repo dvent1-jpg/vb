@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/tokens.css?v=49">
-  <link rel="stylesheet" href="css/slides.css?v=49">
+  <link rel="stylesheet" href="css/tokens.css?v=50">
+  <link rel="stylesheet" href="css/slides.css?v=50">
 </head>
 <body>
 
@@ -384,7 +384,7 @@
       <div class="token-board">
         <div class="head">
           <h2 class="display-lg reveal">How this deck was built.</h2>
-          <p class="body-lg reveal">I used Claude Code to scrape velocity.black for CSS values, which I then used to build a tokens.css document that acted as the source of truth and called the Unsplash API to add luxury travel photography directly into the deck.</p>
+          <p class="body-lg reveal">I used Claude Code to scrape Velocity.black for CSS values. I used that to build a tokens.css document that acted as the source of truth and called the Unsplash API to directly inject luxury travel photography.</p>
         </div>
         <div class="token-group tg--span2 reveal" data-reveal="2">
           <span class="g-label">Color</span>
@@ -435,11 +435,16 @@
         <div class="token-group tg--code reveal" data-reveal="4">
           <span class="g-label">tokens.css</span>
           <div class="code-card"><span class="k">--vb-black</span>: #0a0a0a;
+<span class="k">--vb-text-soft</span>: rgba(255, 255, 255, 0.75);
+<span class="k">--vb-border</span>: rgba(255, 255, 255, 0.1);
 <span class="k">--vb-violet</span>: #9747ff;
 <span class="k">--vb-ember</span>: #fb390c;
 <span class="k">--vb-blue</span>: #1e6dfa;
 <span class="k">--vb-grad-accent</span>: linear-gradient(90deg, var(--vb-violet) 0%, var(--vb-ember) 100%);
+<span class="k">--vb-vignette-inset</span>: rgb(10, 10, 10) 0px 0px 48px 48px inset;
+<span class="k">--vb-blur-glass</span>: 16px;
 <span class="k">--vb-ease-site</span>: cubic-bezier(0.6, 0, 0.4, 1);
+<span class="k">--vb-dur-standard</span>: 400ms;
 <span class="k">--vb-radius-pill</span>: 9999px;
 <span class="k">--vb-grain-opacity</span>: 0.55;</div>
         </div>
@@ -474,7 +479,7 @@
 <div id="progress"></div>
 <div id="slide-counter">01 / 27</div>
 
-<script src="js/deck.js?v=49"></script>
+<script src="js/deck.js?v=50"></script>
 
 <!-- Photography via Unsplash (unsplash.com/license):
      bg-title.jpg (glacier bath) — Roan Lavery, unsplash.com/photos/BQLFUB4_EJw
