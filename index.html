@@ -8,8 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500&family=Geist+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/tokens.css?v=38">
-  <link rel="stylesheet" href="css/slides.css?v=38">
+  <link rel="stylesheet" href="css/tokens.css?v=41">
+  <link rel="stylesheet" href="css/slides.css?v=41">
 </head>
 <body>
 
@@ -384,36 +384,82 @@
       <div class="head">
         <p class="eyebrow reveal">About this deck</p>
         <h2 class="display-lg reveal">How this deck was built.</h2>
-        <p class="body-lg reveal">By hand, in HTML and CSS, on your design system. I pulled the tokens from velocity.black before writing anything. The ground is #0a0a0a, text steps through four opacities of white, and the violet to ember gradient is yours. The photography came through the Unsplash API, from a single search for luxury travel. And since Twenty Four Sans belongs to you alone, commissioned from FROST, Hanken Grotesk stands in today.</p>
+        <p class="body-lg reveal">By hand, in HTML and CSS, on a token system reverse engineered from velocity.black. Photography arrived through the Unsplash API, from one search for luxury travel. And Twenty Four Sans belongs to you alone, commissioned from FROST, so Hanken Grotesk stands in today.</p>
       </div>
-      <div class="token-sheet reveal">
-        <div class="token-group">
-          <span class="g-label">Color</span>
-          <div class="swatch-row">
-            <div class="swatch"><div class="chip" style="background:var(--vb-bg)"></div><span class="hx">#0A0A0A</span></div>
-            <div class="swatch"><div class="chip" style="background:var(--vb-text-primary)"></div><span class="hx">100%</span></div>
-            <div class="swatch"><div class="chip" style="background:var(--vb-text-soft)"></div><span class="hx">75%</span></div>
-            <div class="swatch"><div class="chip" style="background:var(--vb-text-muted)"></div><span class="hx">50%</span></div>
-            <div class="swatch"><div class="chip" style="background:var(--vb-border)"></div><span class="hx">10%</span></div>
+      <div class="token-board">
+        <div class="tb-col">
+          <div class="token-group reveal" data-reveal="2">
+            <span class="g-label">Color</span>
+            <div class="swatch-row">
+              <div class="swatch"><div class="chip" style="background:var(--vb-black)"></div><span class="hx">0A0A0A</span></div>
+              <div class="swatch"><div class="chip" style="background:var(--vb-gray-950)"></div><span class="hx">121212</span></div>
+              <div class="swatch"><div class="chip" style="background:var(--vb-gray-700)"></div><span class="hx">4D4D4D</span></div>
+              <div class="swatch"><div class="chip" style="background:var(--vb-gray-500)"></div><span class="hx">808080</span></div>
+              <div class="swatch"><div class="chip" style="background:var(--vb-gray-300)"></div><span class="hx">BDBDBD</span></div>
+              <div class="swatch"><div class="chip" style="background:var(--vb-gray-100)"></div><span class="hx">EDEDED</span></div>
+            </div>
+            <div class="swatch-row">
+              <div class="swatch"><div class="chip" style="background:var(--vb-text-primary)"></div><span class="hx">100%</span></div>
+              <div class="swatch"><div class="chip" style="background:var(--vb-text-soft)"></div><span class="hx">75%</span></div>
+              <div class="swatch"><div class="chip" style="background:var(--vb-text-muted)"></div><span class="hx">50%</span></div>
+              <div class="swatch"><div class="chip" style="background:var(--vb-violet)"></div><span class="hx">9747FF</span></div>
+              <div class="swatch"><div class="chip" style="background:var(--vb-ember)"></div><span class="hx">FB390C</span></div>
+              <div class="swatch"><div class="chip" style="background:var(--vb-blue)"></div><span class="hx">1E6DFA</span></div>
+            </div>
+          </div>
+          <div class="token-group reveal" data-reveal="3">
+            <span class="g-label">Type</span>
+            <div class="type-specimens">
+              <span style="font: 300 38px/1.1 var(--vb-font-sans); letter-spacing: -0.02em;">Display Light 300</span>
+              <span style="font: 400 21px/1.4 var(--vb-font-sans); color: var(--vb-text-soft);">Body Regular 400</span>
+              <span class="eyebrow" style="font-size:15px;">Eyebrow mono, tracked</span>
+            </div>
+          </div>
+          <div class="token-group reveal" data-reveal="4">
+            <span class="g-label">Radius</span>
+            <div class="radius-row">
+              <div class="swatch"><div class="rb" style="border-radius:var(--vb-radius-xs)"></div><span class="hx">4</span></div>
+              <div class="swatch"><div class="rb" style="border-radius:var(--vb-radius-sm)"></div><span class="hx">8</span></div>
+              <div class="swatch"><div class="rb" style="border-radius:var(--vb-radius-md)"></div><span class="hx">12</span></div>
+              <div class="swatch"><div class="rb" style="border-radius:var(--vb-radius-lg)"></div><span class="hx">24</span></div>
+              <div class="swatch"><div class="rb rb--pill"></div><span class="hx">9999</span></div>
+            </div>
+          </div>
+          <div class="token-group reveal" data-reveal="5">
+            <span class="g-label">Motion</span>
+            <div class="motion-lines">
+              <span>cubic-bezier(0.6, 0, 0.4, 1)</span>
+              <span>100 &middot; 300 &middot; 400 &middot; 600 &middot; 1000 ms</span>
+            </div>
           </div>
         </div>
-        <div class="token-group">
-          <span class="g-label">Type</span>
-          <div class="type-specimens">
-            <span style="font: 300 40px/1.1 var(--vb-font-sans); letter-spacing: -0.02em;">Display Light 300</span>
-            <span style="font: 400 22px/1.4 var(--vb-font-sans); color: var(--vb-text-soft);">Body Regular 400</span>
-            <span class="eyebrow" style="font-size:16px;">Eyebrow mono +2px</span>
+        <div class="tb-col">
+          <div class="token-group reveal" data-reveal="2">
+            <span class="g-label">Accent</span>
+            <div class="gradient-bar"></div>
+            <div class="gradient-ends"><span>#9747FF</span><span>#FB390C</span></div>
           </div>
-        </div>
-        <div class="token-group">
-          <span class="g-label">Accent</span>
-          <div class="gradient-bar"></div>
-          <div class="gradient-ends"><span>#9747FF</span><span>#FB390C</span></div>
-          <span class="pill" style="align-self:flex-start;">Pill &middot; radius 9999</span>
-        </div>
-        <div class="token-group">
-          <span class="g-label">Photography</span>
-          <span class="ph-line">Unsplash API &middot; one search, &ldquo;luxury travel&rdquo; &middot; twelve frames</span>
+          <div class="token-group reveal" data-reveal="3">
+            <span class="g-label">Effects</span>
+            <div class="fx-row">
+              <div class="swatch"><div class="fx fx--glow"></div><span class="hx">glow</span></div>
+              <div class="swatch"><div class="fx fx--fade"></div><span class="hx">fade-hard</span></div>
+            </div>
+          </div>
+          <div class="token-group reveal" data-reveal="4">
+            <span class="g-label">tokens.css</span>
+            <div class="code-card"><span class="k">--vb-violet</span>: #9747ff;
+<span class="k">--vb-ember</span>: #fb390c;
+<span class="k">--vb-blue</span>: #1e6dfa;
+<span class="k">--vb-grad-accent</span>: linear-gradient(90deg, var(--vb-violet) 0%, var(--vb-ember) 100%);
+<span class="k">--vb-vignette-inset</span>: rgb(10, 10, 10) 0px 0px 48px 48px inset;
+<span class="k">--vb-fade-hard</span>: linear-gradient(rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.94) 68.51%, rgb(10, 10, 10) 81.42%);
+<span class="k">--vb-ease-site</span>: cubic-bezier(0.6, 0, 0.4, 1);</div>
+          </div>
+          <div class="token-group reveal" data-reveal="5">
+            <span class="g-label">Photography</span>
+            <span class="ph-line">Unsplash API &middot; one search, &ldquo;luxury travel&rdquo; &middot; twelve frames</span>
+          </div>
         </div>
       </div>
     </section>
@@ -431,7 +477,7 @@
 <div id="progress"></div>
 <div id="slide-counter">01 / 27</div>
 
-<script src="js/deck.js?v=38"></script>
+<script src="js/deck.js?v=41"></script>
 
 <!-- Photography via Unsplash (unsplash.com/license):
      bg-title.jpg (glacier bath) — Roan Lavery, unsplash.com/photos/BQLFUB4_EJw
