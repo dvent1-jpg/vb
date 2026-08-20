@@ -8,7 +8,7 @@
   const progress = document.getElementById('progress');
   const counter = document.getElementById('slide-counter');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const TRAVEL = 560; /* transition 520ms + settle margin */
+  const TRAVEL = 900; /* transition 850ms + settle margin */
 
   let current = -1;
   let overlayTimer = null;
@@ -32,7 +32,7 @@
         el.textContent = prefix + target.toFixed(decimals) + suffix;
         return;
       }
-      const duration = 1400;
+      const duration = 2000;
       const start = performance.now();
       const ease = (t) => 1 - Math.pow(1 - t, 4);
       function frame(now) {
