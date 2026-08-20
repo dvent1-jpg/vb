@@ -59,6 +59,11 @@
   --vb-aurora-blur: 240px;
   --vb-aurora-opacity: 0.4;
 
+  /* Grain: app marketing lays a subtle noise texture over gradients;
+     approximated here with SVG turbulence */
+  --vb-grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='0.5'/></svg>");
+  --vb-grain-opacity: 0.25;
+
   /* Shadows (observed verbatim) */
   --vb-shadow-glow: var(--vb-glow-violet) -2px -2px 2px 0px, var(--vb-glow-ember) 2px -4px 2px 0px;
   --vb-vignette-inset: rgb(10, 10, 10) 0px 0px 48px 48px inset;

@@ -576,6 +576,7 @@ html, body {
 .token-board { width: 100%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 64px 40px; }
 .tg--span2 { grid-column: span 2; }
 .tg--span3 { grid-column: span 3; }
+.tg--span4 { grid-column: span 4; }
 .token-board .token-group {
   padding-top: 12px;
   border-top: 1px solid var(--vb-border);
@@ -590,7 +591,7 @@ html, body {
 }
 .swatch-row { display: flex; gap: 10px; }
 .swatch { display: flex; flex-direction: column; gap: 8px; align-items: center; }
-.swatch .chip { width: 56px; height: 56px; border-radius: var(--vb-radius-sm); border: 1px solid var(--vb-border); }
+.swatch .chip { width: 64px; height: 64px; border-radius: var(--vb-radius-sm); border: 1px solid var(--vb-border); }
 .swatch .hx {
   font-family: var(--vb-font-mono);
   font-size: 11px;
@@ -602,7 +603,22 @@ html, body {
 .type-provenance s { color: var(--vb-text-muted); text-decoration: line-through; text-decoration-color: rgba(255, 255, 255, 0.35); }
 .type-provenance .sep { color: var(--vb-text-muted); }
 .type-provenance .now { color: var(--vb-text-emphasis); }
-.gradient-bar { height: 76px; border-radius: var(--vb-radius-md); background: var(--vb-grad-accent); }
+.gradient-bar {
+  height: 60px;
+  margin-top: 14px;
+  border-radius: var(--vb-radius-md);
+  background: var(--vb-grad-accent);
+  position: relative;
+  overflow: hidden;
+}
+.gradient-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: var(--vb-grain);
+  opacity: var(--vb-grain-opacity);
+  mix-blend-mode: overlay;
+}
 .gradient-ends {
   display: flex;
   justify-content: space-between;
@@ -611,15 +627,16 @@ html, body {
   letter-spacing: 1px;
   color: var(--vb-text-muted);
 }
-.radius-row { display: flex; gap: 20px; align-items: flex-end; }
+.radius-row { display: flex; gap: 22px; align-items: flex-end; }
+.radius-rows { display: flex; flex-direction: column; gap: 18px; }
 .radius-row .swatch { justify-content: flex-end; }
 .radius-row .rb {
-  width: 52px;
-  height: 52px;
+  width: 74px;
+  height: 74px;
   border: 1px solid var(--vb-border-strong);
   background: var(--vb-bg-raised);
 }
-.radius-row .rb--pill { width: 100px; height: 40px; border-radius: var(--vb-radius-pill); }
+.radius-row .rb--pill { width: 150px; height: 56px; border-radius: var(--vb-radius-pill); }
 .motion-lines {
   display: flex;
   flex-direction: column;
@@ -758,10 +775,10 @@ html, body {
 .slide--close a:hover { border-bottom-color: var(--vb-text-muted); }
 
 .ph-row { display: flex; align-items: center; gap: 36px; }
-.ph-thumbs { display: flex; gap: 14px; }
+.ph-thumbs { display: flex; gap: 16px; }
 .ph-thumbs .cell {
-  width: 200px;
-  height: 138px;
+  width: 256px;
+  height: 176px;
   border-radius: var(--vb-radius-sm);
   border: 1px solid var(--vb-border);
   overflow: hidden;
