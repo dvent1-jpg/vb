@@ -36,6 +36,9 @@ html, body {
 }
 
 /* --- Slides --- */
+/* Vertical travel: the deck descends through one black canvas.
+   Slides sit above or below the frame and push through it on advance.
+   Imagery containers (.plax) lag 12% behind their slide's travel. */
 .slide {
   position: absolute;
   inset: 0;
@@ -44,15 +47,32 @@ html, body {
   flex-direction: column;
   justify-content: center;
   visibility: hidden;
-  opacity: 0;
-  transition: opacity 600ms var(--vb-ease), visibility 0s 600ms;
+  transform: translateY(103%);
+  z-index: 1;
 }
-
+.slide.is-above { transform: translateY(-103%); }
 .slide.active {
   visibility: visible;
-  opacity: 1;
-  transition: opacity 600ms var(--vb-ease);
+  transform: translateY(0);
 }
+.slide.is-held { transform: translateY(0); visibility: visible; }
+.slide.z-top { z-index: 5; }
+
+#stage.anim .slide {
+  transition: transform 520ms var(--vb-ease), visibility 0s 520ms;
+}
+#stage.anim .slide.active,
+#stage.anim .slide.is-held {
+  transition: transform 520ms var(--vb-ease);
+}
+
+/* Parallax lag on imagery layers. The shift rides a CSS variable so it
+   composes with any transform a container already carries. */
+.plax { transform: translateY(var(--plax-shift, 0px)); }
+.slide.is-above .plax { --plax-shift: 12%; }
+.slide:not(.active):not(.is-above):not(.is-held) .plax { --plax-shift: -12%; }
+.slide.active .plax, .slide.is-held .plax { --plax-shift: 0px; }
+#stage.anim .plax { transition: transform 520ms var(--vb-ease); }
 
 /* --- Reveal choreography --- */
 .reveal {
@@ -78,7 +98,10 @@ html, body {
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { transition: none; transform: none; }
-  .slide { transition: none; }
+  #stage.anim .slide, #stage.anim .plax { transition: opacity 300ms ease; }
+  .slide, .slide.is-above { transform: none; opacity: 0; }
+  .slide .plax { --plax-shift: 0px !important; }
+  .slide.active { transform: none; opacity: 1; }
 }
 
 /* --- Photographic grounds (velocity.black treatment: imagery
@@ -159,12 +182,12 @@ html, body {
 
 #progress {
   position: absolute;
-  bottom: 0; left: 0;
-  height: 2px;
-  width: 0%;
+  top: 0; right: 0;
+  width: 2px;
+  height: 0%;
   background: var(--vb-text-primary);
   z-index: 10;
-  transition: width 400ms var(--vb-ease);
+  transition: height 400ms var(--vb-ease);
 }
 
 #slide-counter {
@@ -409,7 +432,7 @@ html, body {
   position: absolute;
   right: -170px;
   top: 46%;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateY(var(--plax-shift, 0px));
   z-index: 1;
 }
 .slide--cover .media img { height: 1010px; max-width: none; width: auto; }

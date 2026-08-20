@@ -1,5 +1,6 @@
-/* Deck engine: stage scaling, slide navigation, hash sync,
-   reveal choreography, animated stat counters. */
+/* Deck engine: stage scaling, vertical slide travel with parallax lag,
+   overlay transitions on case study covers, hash sync, reveal
+   choreography, animated stat counters. */
 
 (() => {
   const stage = document.getElementById('stage');
@@ -7,8 +8,10 @@
   const progress = document.getElementById('progress');
   const counter = document.getElementById('slide-counter');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const TRAVEL = 560; /* transition 520ms + settle margin */
 
   let current = -1;
+  let overlayTimer = null;
 
   /* --- Stage scaling: fit 1920×1080 into the viewport --- */
   function fitStage() {
@@ -41,17 +44,70 @@
     });
   }
 
+  /* Apply class changes without animating them */
+  function silently(fn) {
+    stage.classList.remove('anim');
+    fn();
+    void stage.offsetWidth;
+    stage.classList.add('anim');
+  }
+
+  /* Position every slide relative to index n (skipping any exceptions) */
+  function setStates(n, skip) {
+    slides.forEach((s, i) => {
+      if (skip && skip.includes(s)) return;
+      s.classList.remove('active', 'is-held', 'z-top');
+      s.classList.toggle('is-above', i < n);
+      if (i === n) s.classList.add('active');
+    });
+  }
+
   /* --- Navigation --- */
   function goTo(index) {
     const next = Math.max(0, Math.min(index, slides.length - 1));
     if (next === current) return;
-    if (current >= 0) slides[current].classList.remove('active');
+
+    /* Flush any pending overlay cleanup */
+    if (overlayTimer) { clearTimeout(overlayTimer); overlayTimer = null; }
+
+    const outgoing = current >= 0 ? slides[current] : null;
+    const incoming = slides[next];
+    const forward = next > current;
+    const jump = current < 0 || Math.abs(next - current) > 1 || reduceMotion;
+
+    if (jump) {
+      silently(() => setStates(next));
+    } else if (forward && incoming.classList.contains('slide--cover')) {
+      /* Cover pulls up over a stationary outgoing slide */
+      outgoing.classList.remove('active');
+      outgoing.classList.add('is-held');
+      incoming.classList.add('z-top');
+      setStates(next, [outgoing]);
+      overlayTimer = setTimeout(() => {
+        silently(() => setStates(next));
+        overlayTimer = null;
+      }, TRAVEL);
+    } else if (!forward && outgoing && outgoing.classList.contains('slide--cover')) {
+      /* Cover slides down, revealing the prior slide beneath it */
+      outgoing.classList.add('z-top');
+      silently(() => {
+        incoming.classList.remove('is-above');
+        incoming.classList.add('is-held');
+      });
+      outgoing.classList.remove('active');
+      overlayTimer = setTimeout(() => {
+        silently(() => setStates(next));
+        animateCounters(incoming);
+        overlayTimer = null;
+      }, TRAVEL);
+    } else {
+      setStates(next);
+    }
+
     current = next;
-    const slide = slides[current];
-    slide.classList.add('active');
     stage.classList.toggle('on-title', current === 0);
-    animateCounters(slide);
-    progress.style.width = `${((current + 1) / slides.length) * 100}%`;
+    if (!overlayTimer || !incoming.classList.contains('is-held')) animateCounters(incoming);
+    progress.style.height = `${((current + 1) / slides.length) * 100}%`;
     counter.textContent = `${String(current + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
     history.replaceState(null, '', `#${current + 1}`);
   }
@@ -60,25 +116,25 @@
   const prevSlide = () => goTo(current - 1);
 
   window.addEventListener('keydown', (e) => {
-    if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); nextSlide(); }
-    else if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); prevSlide(); }
+    if (['ArrowDown', 'ArrowRight', 'Down', 'Right', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); nextSlide(); }
+    else if (['ArrowUp', 'ArrowLeft', 'Up', 'Left', 'PageUp'].includes(e.key)) { e.preventDefault(); prevSlide(); }
     else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
     else if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
   });
 
   stage.addEventListener('click', (e) => {
-    if (e.clientX / window.innerWidth < 0.2) prevSlide();
+    if (e.clientY / window.innerHeight < 0.2) prevSlide();
     else nextSlide();
   });
 
-  /* Touch swipe */
-  let touchX = null;
-  window.addEventListener('touchstart', (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+  /* Touch swipe: vertical */
+  let touchY = null;
+  window.addEventListener('touchstart', (e) => { touchY = e.touches[0].clientY; }, { passive: true });
   window.addEventListener('touchend', (e) => {
-    if (touchX === null) return;
-    const dx = e.changedTouches[0].clientX - touchX;
-    if (Math.abs(dx) > 60) (dx < 0 ? nextSlide : prevSlide)();
-    touchX = null;
+    if (touchY === null) return;
+    const dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dy) > 60) (dy < 0 ? nextSlide : prevSlide)();
+    touchY = null;
   }, { passive: true });
 
   /* --- Hash navigation: start there, and follow manual edits --- */
@@ -88,4 +144,5 @@
   }
   window.addEventListener('hashchange', goToHash);
   goToHash();
+  requestAnimationFrame(() => stage.classList.add('anim'));
 })();
