@@ -604,9 +604,9 @@ html, body {
   text-transform: uppercase;
   color: var(--vb-text-muted);
 }
-.swatch-row { display: flex; gap: 10px; }
+.swatch-row { display: flex; justify-content: space-between; }
 .swatch { display: flex; flex-direction: column; gap: 8px; align-items: center; }
-.swatch .chip { width: 64px; height: 64px; border-radius: var(--vb-radius-sm); border: 1px solid var(--vb-border); }
+.swatch .chip { width: 70px; height: 70px; border-radius: var(--vb-radius-sm); border: 1px solid var(--vb-border); }
 .swatch .hx {
   font-family: var(--vb-font-mono);
   font-size: 11px;
@@ -619,7 +619,7 @@ html, body {
 .type-provenance .sep { color: var(--vb-text-muted); }
 .type-provenance .now { color: var(--vb-text-emphasis); }
 .gradient-bar {
-  width: 730px;
+  width: 100%;
   height: 60px;
   margin-top: 14px;
   border-radius: var(--vb-radius-md);
