@@ -249,28 +249,12 @@ html, body {
   color: var(--vb-text-muted);
 }
 .slide--split.media-plus .copy { flex: 1 1 46%; }
-.slide--split.media-plus .media { flex: 1 1 56%; }
+.slide--split.media-plus .media { flex: 1 1 56%; justify-content: flex-end; }
 .slide--split.media-plus.copy-wider .copy { flex: 1 1 51%; }
 .slide--split.media-plus.copy-wider .media { flex: 1 1 51%; }
 .slide--split.media-wide .copy { flex: 1 1 38%; }
 .slide--split.media-wide .media { flex: 1 1 62%; }
 .slide--split .media img.device--desktop { max-height: 830px; }
-/* Bleed variant: media leaves the column, scales up, crops off-canvas right */
-.slide--split.media-bleed { justify-content: flex-start; }
-.slide--split.media-bleed .copy { max-width: 560px; flex: none; position: relative; z-index: 2; }
-.slide--split.media-bleed .media {
-  position: absolute;
-  right: -240px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1;
-}
-.slide--split.media-bleed .media img.device--pair {
-  height: 1010px;
-  max-height: none;
-  max-width: none;
-  width: auto;
-}
 
 /* --- Accent utilities (velocity.black's single non-monochrome move) --- */
 .grad-text {
