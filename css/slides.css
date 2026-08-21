@@ -240,6 +240,14 @@ html, body {
 .slide--split.media-duo .copy { flex: 0 0 610px; }
 .slide--split.media-duo .media { flex: 1 1 auto; gap: 28px; justify-content: flex-end; }
 .slide--split.media-duo .media img.device { max-height: 860px; }
+.duo-fig { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.duo-fig figcaption {
+  font-family: var(--vb-font-mono);
+  font-size: 13px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--vb-text-muted);
+}
 .slide--split.media-plus .copy { flex: 1 1 46%; }
 .slide--split.media-plus .media { flex: 1 1 56%; }
 .slide--split.media-wide .copy { flex: 1 1 38%; }
@@ -486,69 +494,6 @@ html, body {
   width: auto;
   filter: drop-shadow(var(--vb-shadow-device-md));
 }
-
-/* --- Transform (before/after with mirrored callouts) --- */
-.slide--transform { flex-direction: row; align-items: center; gap: 44px; }
-.slide--transform .copy {
-  flex: 0 0 400px;
-  display: flex;
-  flex-direction: column;
-  gap: var(--vb-space-3);
-}
-.transform-group {
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 18px;
-}
-.transform-group .phone {
-  flex: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-.transform-group .phone .tag {
-  font-family: var(--vb-font-mono);
-  font-size: 13px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--vb-text-muted);
-}
-.transform-group .phone img {
-  width: 345px;
-  height: auto;
-  filter: drop-shadow(var(--vb-shadow-device-sm));
-}
-.callouts {
-  flex: 0 0 190px;
-  height: 693px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-.callouts .c {
-  font-family: var(--vb-font-mono);
-  font-size: 13px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  line-height: 1.6;
-  color: var(--vb-text-soft);
-  position: relative;
-}
-.callouts--l .c { text-align: right; padding-right: 26px; }
-.callouts--r .c { text-align: left; padding-left: 26px; }
-.callouts .c::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  width: 18px;
-  height: 1px;
-  background: var(--vb-border-strong);
-}
-.callouts--l .c::after { right: 0; }
-.callouts--r .c::after { left: 0; }
 
 /* --- Compare (two labeled figures) --- */
 .slide--compare { gap: var(--vb-space-4); }
