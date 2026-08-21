@@ -495,6 +495,12 @@ html, body {
   filter: drop-shadow(var(--vb-shadow-device-md));
 }
 
+/* --- Compare, title below: figures first, centered headline under --- */
+.slide--compare.title-below { align-items: center; justify-content: center; gap: 56px; }
+.slide--compare.title-below .figures { margin-top: 0; }
+.slide--compare.title-below figure img { max-height: 620px; }
+.slide--compare.title-below h2 { text-align: center; }
+
 /* --- Compare (two labeled figures) --- */
 .slide--compare { gap: var(--vb-space-4); }
 .slide--compare .head { display: flex; flex-direction: column; gap: var(--vb-space-2); max-width: 1380px; }
