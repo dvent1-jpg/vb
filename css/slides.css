@@ -235,6 +235,8 @@ html, body {
   width: auto;
   filter: drop-shadow(var(--vb-shadow-device-lg));
 }
+.slide--split.media-plus .copy { flex: 1 1 46%; }
+.slide--split.media-plus .media { flex: 1 1 56%; }
 .slide--split.media-wide .copy { flex: 1 1 38%; }
 .slide--split.media-wide .media { flex: 1 1 62%; }
 .slide--split .media img.device--desktop { max-height: 830px; }
