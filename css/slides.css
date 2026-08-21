@@ -402,10 +402,10 @@ html, body {
 .agenda-left { flex: 1 1 auto; display: flex; flex-direction: column; }
 .agenda-left .eyebrow { margin-bottom: var(--vb-space-4); }
 .agenda-row {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  align-items: baseline;
-  gap: var(--vb-space-4);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
   padding: var(--vb-space-4) 0;
   border-top: 1px solid var(--vb-border);
 }
