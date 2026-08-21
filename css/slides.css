@@ -235,6 +235,11 @@ html, body {
   width: auto;
   filter: drop-shadow(var(--vb-shadow-device-lg));
 }
+/* Duo: two phones side by side, copy narrowed */
+.slide--split.media-duo { gap: var(--vb-space-5); }
+.slide--split.media-duo .copy { flex: 0 0 540px; }
+.slide--split.media-duo .media { flex: 1 1 auto; gap: 28px; justify-content: flex-end; }
+.slide--split.media-duo .media img.device { max-height: 860px; }
 .slide--split.media-plus .copy { flex: 1 1 46%; }
 .slide--split.media-plus .media { flex: 1 1 56%; }
 .slide--split.media-wide .copy { flex: 1 1 38%; }
